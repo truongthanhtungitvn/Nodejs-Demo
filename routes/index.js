@@ -6,7 +6,7 @@ import routes from '../views/src/routes';
 import reducers from '../views/src/reducers/index';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { ADD_ITEM } from '../views/src/actions/list_actions';
+// import { ADD_ITEM } from '../views/src/actions/list_actions';
 
 let router = express.Router();
 
@@ -50,7 +50,7 @@ router.get('/', (req, res) => {
 			item/article immediately.
 			 */
 			store.dispatch({
-			    type: ADD_ITEM,
+			    type: 'stefan_test',
                 payload: {
 			        name: 'Components',
                     description: 'Description for components'

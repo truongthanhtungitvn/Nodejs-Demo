@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
-import ViewItem from './containers/show_list_item';
 
 import Header from './components/header';
 import Main from './components/main';

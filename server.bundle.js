@@ -114,25 +114,25 @@ function addItem(item) {
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-redux");
+module.exports = require("react-router");
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router");
+module.exports = require("express");
 
 /***/ }),
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("redux");
+module.exports = require("react-redux");
 
 /***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = require("express");
+module.exports = require("redux");
 
 /***/ }),
 /* 6 */
@@ -145,7 +145,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _express = __webpack_require__(5);
+var _express = __webpack_require__(3);
 
 var _express2 = _interopRequireDefault(_express);
 
@@ -153,27 +153,27 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(22);
+var _server = __webpack_require__(20);
 
 var _server2 = _interopRequireDefault(_server);
 
-var _reactRouter = __webpack_require__(3);
+var _reactRouter = __webpack_require__(2);
 
-var _routes = __webpack_require__(20);
+var _routes = __webpack_require__(18);
 
 var _routes2 = _interopRequireDefault(_routes);
 
-var _index = __webpack_require__(18);
+var _index = __webpack_require__(16);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _redux = __webpack_require__(4);
+var _redux = __webpack_require__(5);
 
-var _reactRedux = __webpack_require__(2);
-
-var _list_actions = __webpack_require__(1);
+var _reactRedux = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import { ADD_ITEM } from '../views/src/actions/list_actions';
 
 var router = _express2.default.Router();
 
@@ -214,7 +214,7 @@ router.get('/', function (req, res) {
    item/article immediately.
     */
 			store.dispatch({
-				type: _list_actions.ADD_ITEM,
+				type: 'stefan_test',
 				payload: {
 					name: 'Components',
 					description: 'Description for components'
@@ -271,7 +271,7 @@ module.exports = require("url");
 "use strict";
 
 
-var _express = __webpack_require__(5);
+var _express = __webpack_require__(3);
 
 var _express2 = _interopRequireDefault(_express);
 
@@ -402,7 +402,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLoading = __webpack_require__(23);
+var _reactLoading = __webpack_require__(21);
 
 var _reactLoading2 = _interopRequireDefault(_reactLoading);
 
@@ -430,14 +430,6 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _list_view = __webpack_require__(16);
-
-var _list_view2 = _interopRequireDefault(_list_view);
-
-var _list_item = __webpack_require__(15);
-
-var _list_item2 = _interopRequireDefault(_list_item);
-
 var _loading = __webpack_require__(13);
 
 var _loading2 = _interopRequireDefault(_loading);
@@ -450,12 +442,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var htmlparser = __webpack_require__(21);
-
-var validUrl = __webpack_require__(24);
+// import sweetalert2 from 'sweetalert2'
+var htmlparser = __webpack_require__(19);
+var validUrl = __webpack_require__(23);
 var spec = [];
-var spec1 = [];
-var spec2 = [];
 
 var Main = function (_Component) {
     _inherits(Main, _Component);
@@ -550,6 +540,14 @@ var Main = function (_Component) {
     }, {
         key: 'fetchData',
         value: function fetchData() {
+            var urlObj = this.state.url1;
+            var urlObj2 = this.state.url2;
+
+            if (!validUrl.isUri(urlObj) || !validUrl.isUri(urlObj2)) {
+                alert('Please input url');
+                return;
+            }
+
             if (this.state.handling == 2) {
                 return;
             }
@@ -558,8 +556,6 @@ var Main = function (_Component) {
                 handling: 1
             });
 
-            var urlObj = this.state.url1;
-            var urlObj2 = this.state.url2;
             var url1 = '/lazadaproxy/' + urlObj;
             var url2 = '/lazadaproxy/' + urlObj2;
             var urls = [url1, url2];
@@ -687,114 +683,7 @@ var Main = function (_Component) {
 exports.default = Main;
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(2);
-
-var _reactRouter = __webpack_require__(3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ListItem = function (_Component) {
-    _inherits(ListItem, _Component);
-
-    function ListItem() {
-        _classCallCheck(this, ListItem);
-
-        return _possibleConstructorReturn(this, (ListItem.__proto__ || Object.getPrototypeOf(ListItem)).apply(this, arguments));
-    }
-
-    _createClass(ListItem, [{
-        key: 'render',
-        value: function render() {
-            if (!this.props.activeItem) {
-                return _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'h3',
-                        null,
-                        'Select an item'
-                    ),
-                    _react2.default.createElement(
-                        'p',
-                        null,
-                        'Description will appear here'
-                    )
-                );
-            }
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'h3',
-                    null,
-                    ' ',
-                    this.props.activeItem.name,
-                    ' '
-                ),
-                _react2.default.createElement(
-                    'p',
-                    null,
-                    this.props.activeItem.description
-                ),
-                _react2.default.createElement(
-                    _reactRouter.Link,
-                    { to: "view/" + this.props.activeItem.name },
-                    _react2.default.createElement(
-                        'button',
-                        { type: 'button', className: 'btn btn-primary' },
-                        'Read More'
-                    )
-                )
-            );
-        }
-    }]);
-
-    return ListItem;
-}(_react.Component);
-
-/*
- This is a redux specific function.
- What is does is: It gets the state specified in here from the global redux state.
- For example, here we are retrieving the list of items from the redux store.
- Whenever this list changes, any component that is using this list of item will re-render.
- */
-
-
-function mapStateToProps(state) {
-    return {
-        activeItem: state.lists.item
-    };
-}
-
-/*
- Here we are creating a Higher order component
- https://facebook.github.io/react/docs/higher-order-components.html
- */
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(ListItem);
-
-/***/ }),
+/* 15 */,
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -805,221 +694,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _redux = __webpack_require__(5);
 
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(2);
-
-var _redux = __webpack_require__(4);
-
-var _list_actions = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ListView = function (_Component) {
-    _inherits(ListView, _Component);
-
-    function ListView() {
-        _classCallCheck(this, ListView);
-
-        return _possibleConstructorReturn(this, (ListView.__proto__ || Object.getPrototypeOf(ListView)).apply(this, arguments));
-    }
-
-    _createClass(ListView, [{
-        key: 'renderList',
-        value: function renderList() {
-            var _this2 = this;
-
-            return this.props.lists.map(function (listItem) {
-                return _react2.default.createElement(
-                    'li',
-                    {
-                        key: listItem.name,
-                        onClick: function onClick() {
-                            return _this2.props.selectItem(listItem);
-                        },
-                        className: 'list-group-item'
-                    },
-                    listItem.name
-                );
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'ul',
-                    { className: 'list-group col-sm-4' },
-                    this.renderList()
-                )
-            );
-        }
-    }]);
-
-    return ListView;
-}(_react.Component);
-
-/*
-This is a redux specific function.
-What is does is: It gets the state specified in here from the global redux state.
-For example, here we are retrieving the list of items from the redux store.
-Whenever this list changes, any component that is using this list of item will re-render.
- */
-
-
-function mapStateToProps(state) {
-    return {
-        lists: state.lists.all
-    };
-}
-
-/*
-This is a redux specific function.
-http://redux.js.org/docs/api/bindActionCreators.html
- */
-function mapDispatchToProps(dispatch) {
-    return (0, _redux.bindActionCreators)({ selectItem: _list_actions.selectItem }, dispatch);
-}
-
-/*
-Here we are creating a Higher order component
-https://facebook.github.io/react/docs/higher-order-components.html
- */
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ListView);
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = __webpack_require__(2);
-
-var _list_actions = __webpack_require__(1);
-
-var _reactRouter = __webpack_require__(3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ShowListItem = function (_Component) {
-	_inherits(ShowListItem, _Component);
-
-	function ShowListItem() {
-		_classCallCheck(this, ShowListItem);
-
-		return _possibleConstructorReturn(this, (ShowListItem.__proto__ || Object.getPrototypeOf(ShowListItem)).apply(this, arguments));
-	}
-
-	_createClass(ShowListItem, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			this.props.getListItem(this.props.params.name);
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var item = this.props.item;
-
-			if (!item) {
-				return _react2.default.createElement(
-					'div',
-					null,
-					'Loading...'
-				);
-			}
-
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(
-					_reactRouter.Link,
-					{ to: "/" },
-					_react2.default.createElement(
-						'button',
-						{ type: 'button', className: 'btn btn-primary', style: { marginTop: 10, marginBottom: 10 } },
-						'Go Back'
-					)
-				),
-				_react2.default.createElement(
-					'h1',
-					null,
-					item.name
-				),
-				_react2.default.createElement(
-					'p',
-					null,
-					item.description
-				)
-			);
-		}
-	}]);
-
-	return ShowListItem;
-}(_react.Component);
-
-/*
- This is a redux specific function.
- What is does is: It gets the state specified in here from the global redux state.
- For example, here we are retrieving the list of items from the redux store.
- Whenever this list changes, any component that is using this list of item will re-render.
- */
-
-
-function mapStateToProps(state) {
-	return {
-		item: state.lists.item
-	};
-}
-
-/*
- Here we are creating a Higher order component
- https://facebook.github.io/react/docs/higher-order-components.html
- */
-exports.default = (0, _reactRedux.connect)(mapStateToProps, { getListItem: _list_actions.getListItem })(ShowListItem);
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _redux = __webpack_require__(4);
-
-var _lists = __webpack_require__(19);
+var _lists = __webpack_require__(17);
 
 var _lists2 = _interopRequireDefault(_lists);
 
@@ -1032,7 +709,7 @@ var rootReducer = (0, _redux.combineReducers)({
 exports.default = rootReducer;
 
 /***/ }),
-/* 19 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1049,21 +726,33 @@ exports.default = function () {
     var action = arguments[1];
 
     switch (action.type) {
-        case _list_actions.FETCH_URL:
+        case _list_actions.ITEM_CLICKED:
             return _extends({}, state, { item: action.payload });
-        case _list_actions.FETCHING:
-            return _extends({}, state, { item: [] });
+        case _list_actions.ADD_ITEM:
+            return _extends({}, state, { all: [].concat(_toConsumableArray(state.all), [action.payload]) });
+        case _list_actions.ITEM_VIEW:
+            switch (action.payload) {
+                case 'Actions':
+                    return _extends({}, state, { item: ListItems[0] });
+                case 'Containers':
+                    return _extends({}, state, { item: ListItems[1] });
+                case 'Reducers':
+                    return _extends({}, state, { item: ListItems[2] });
+            }
     }
     return state;
 };
 
 var _list_actions = __webpack_require__(1);
 
-var data = [];
-var INITIAL_STATE = { data: data };
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var ListItems = [{ name: 'Actions', description: 'Description for actions' }, { name: 'Containers', description: 'Description for containers' }, { name: 'Reducers', description: 'Description for reducer' }];
+
+var INITIAL_STATE = { all: ListItems, item: null };
 
 /***/ }),
-/* 20 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1077,11 +766,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouter = __webpack_require__(3);
-
-var _show_list_item = __webpack_require__(17);
-
-var _show_list_item2 = _interopRequireDefault(_show_list_item);
+var _reactRouter = __webpack_require__(2);
 
 var _header = __webpack_require__(12);
 
@@ -1099,31 +784,31 @@ exports.default = _react2.default.createElement(
     _react2.default.createElement(
         _reactRouter.Route,
         { path: '/', component: _header2.default },
-        _react2.default.createElement(_reactRouter.IndexRoute, { component: _main2.default }),
-        _react2.default.createElement(_reactRouter.Route, { path: 'view/:name', component: _show_list_item2.default })
+        _react2.default.createElement(_reactRouter.IndexRoute, { component: _main2.default })
     )
 );
 
 /***/ }),
-/* 21 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = require("htmlparser2");
 
 /***/ }),
-/* 22 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 23 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-loading");
 
 /***/ }),
-/* 24 */
+/* 22 */,
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = require("valid-url");

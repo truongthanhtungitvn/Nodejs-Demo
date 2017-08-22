@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Loading from './loading';
+// import sweetalert2 from 'sweetalert2'
 var htmlparser = require("htmlparser2");
 var validUrl = require('valid-url');
 let spec = []
@@ -86,6 +87,14 @@ class Main extends Component {
     }
 
     fetchData() {
+        let urlObj = this.state.url1
+        let urlObj2 = this.state.url2
+
+        if (!validUrl.isUri(urlObj) || !validUrl.isUri(urlObj2)){
+            alert('Please input url');
+            return;
+        }
+
         if(this.state.handling == 2){
             return;
         }
@@ -94,8 +103,6 @@ class Main extends Component {
             handling: 1
         })
 
-        let urlObj = this.state.url1
-        let urlObj2 = this.state.url2
         const url1 = '/lazadaproxy/'+ urlObj;
         const url2 = '/lazadaproxy/'+ urlObj2;
         let urls = [url1, url2]
